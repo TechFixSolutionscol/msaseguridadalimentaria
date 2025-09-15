@@ -302,7 +302,7 @@ Convertimos la complejidad en planes de acción claros, guiándote paso a paso c
         </div>
     </section>
 
-    <section class="section bg-overlay py-3" style="background: #007bff;">
+    <section class="section bg-overlay py-3" style="background: #0f023d;">
         <div class="container">
             <div class="marquee-wrapper" style="overflow:hidden; white-space:nowrap;">
                 <div class="marquee" style="display:inline-block; animation: marquee 18s linear infinite;">
@@ -328,12 +328,12 @@ Convertimos la complejidad en planes de acción claros, guiándote paso a paso c
                 100% { transform: translateX(-100%);}
             }
             .marquee-wrapper {
-                background: #020646;
+                background: #dfd005;
                 border-radius: 6px;
                 padding: 8px 0;
             }
             .marquee a {
-                color: #007bff;
+                color: #001aff;
                 text-decoration: none;
             }
             .marquee a:hover {
@@ -474,6 +474,7 @@ Convertimos la complejidad en planes de acción claros, guiándote paso a paso c
             transition: background 0.2s;
             padding: 0;
             image-resolution: 300dpi;
+            animation: whatsapp-bounce 1.5s infinite;
         }
         .whatsapp-float:hover {
             background: #20ba5a;
@@ -494,7 +495,23 @@ Convertimos la complejidad en planes de acción claros, guiándote paso a paso c
                 height: 68px;
                 font-size: 22px;
             }
-           
+        }
+        @keyframes whatsapp-bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            20% {
+                transform: translateY(-10px);
+            }
+            40% {
+                transform: translateY(0);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+            80% {
+                transform: translateY(0);
+            }
         }
     </style>
     <a href="https://wa.me/573002000000" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
