@@ -302,7 +302,7 @@ Convertimos la complejidad en planes de acción claros, guiándote paso a paso c
         </div>
     </section>
 
-    <section class="section bg-overlay py-3" style="background: #03046eee;">
+    <section class="section bg-overlay py-3" style="background: #010120ee;">
         <div class="container">
             <div class="marquee-wrapper" style="overflow:hidden; white-space:nowrap;">
                 <div class="marquee" style="display:inline-block; animation: marquee 18s linear infinite;">
@@ -328,12 +328,12 @@ Convertimos la complejidad en planes de acción claros, guiándote paso a paso c
                 100% { transform: translateX(-100%);}
             }
             .marquee-wrapper {
-                background: #dfd005;
+                background: #040135;
                 border-radius: 6px;
                 padding: 8px 0;
             }
             .marquee a {
-                color: #001aff;
+                color: #020842;
                 text-decoration: none;
             }
             .marquee a:hover {
@@ -378,23 +378,23 @@ Convertimos la complejidad en planes de acción claros, guiándote paso a paso c
             <h3 class="section-title mb-5">Contáctanos</h3>
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-8 col-lg-7">
-                    <form class="contact-form">
+                    <form class="contact-form" id="contactForm">
                         <div class="form-row">
                             <div class="col form-group">
-                                <input type="text" class="form-control" placeholder="Nombre" required>
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
                             </div>
                             <div class="col form-group">
-                                <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Teléfono">
+                            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono">
                         </div>
                         <div class="form-group">
                             <textarea name="mensaje" id="mensaje" cols="30" rows="5" class="form-control" placeholder="¿En qué podemos ayudarte?" required></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary btn-block" value="Enviar mensaje">
+                            <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
                         </div>
                     </form>
                 </div>
@@ -448,9 +448,78 @@ Convertimos la complejidad en planes de acción claros, guiándote paso a paso c
 
     <!-- Ollie js -->
     <script src="assets/js/ollie.js"></script>
+    
+    <!-- WhatsApp Form Handler -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener los datos del formulario
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            // Crear el mensaje para WhatsApp
+            let whatsappMessage = `¡Hola! Me interesa conocer más sobre MSA Seguridad Alimentaria.\n\n`;
+            whatsappMessage += `*Datos de contacto:*\n`;
+            whatsappMessage += `• Nombre: ${nombre}\n`;
+            whatsappMessage += `• Email: ${email}\n`;
+            if (telefono) {
+                whatsappMessage += `• Teléfono: ${telefono}\n`;
+            }
+            whatsappMessage += `\n*Mensaje:*\n${mensaje}\n\n`;
+            whatsappMessage += `Espero su respuesta. ¡Gracias!`;
+            
+            // Codificar el mensaje para URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Número de WhatsApp
+            const whatsappNumber = '525512345678';
+            
+            // Crear la URL de WhatsApp
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Abrir WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Limpiar el formulario
+            document.getElementById('contactForm').reset();
+            
+            // Mostrar mensaje de confirmación
+            alert('¡Gracias! Se abrirá WhatsApp para enviar tu mensaje.');
+        });
+    </script>
 
     <!-- WhatsApp Floating Button -->
     <style>
+        @keyframes whatsapp-pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+            }
+        }
+        
+        @keyframes whatsapp-bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
         .whatsapp-float {
             position: fixed;
             right: 24px;
@@ -464,36 +533,49 @@ Convertimos la complejidad en planes de acción claros, guiándote paso a paso c
             background: #25d366;
             color: #fff;
             border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
             text-decoration: none;
             font-size: 28px;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
             padding: 0;
             image-resolution: 300dpi;
+            animation: whatsapp-pulse 2s infinite;
         }
+        
         .whatsapp-float:hover {
             background: #20ba5a;
             color: #fff;
             text-decoration: none;
+            transform: scale(1.1);
+            animation: whatsapp-bounce 0.6s ease;
         }
+        
         .whatsapp-float img {
             width: 68px;
             height: 68px;
             display: block;
+            transition: transform 0.3s ease;
         }
+        
+        .whatsapp-float:hover img {
+            transform: rotate(5deg);
+        }
+        
         .whatsapp-text {
             display: none;
         }
+        
         @media (max-width: 576px) {
             .whatsapp-float {
                 width: 68px;
                 height: 68px;
                 font-size: 22px;
+                right: 16px;
+                bottom: 16px;
             }
-           
         }
     </style>
-    <a href="https://wa.me/573002000000" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <a href="https://wa.me/525512345678" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <img src="assets/imgs/whatsapp.png" alt="WhatsApp, icono de ayuda flotante en la esquina inferior derecha sobre fondo verde, transmite accesibilidad y soporte inmediato" width="68" height="68" style="display:block;">
         <span class="whatsapp-text">¿Necesitas ayuda?</span>
     </a>
