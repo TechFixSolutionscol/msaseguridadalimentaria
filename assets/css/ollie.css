@@ -11013,6 +11013,13 @@ a.text-dark:hover, a.text-dark:focus {
   top: 2px;
 }
 
+.section-title{
+  text-align: left;
+  text-decoration: #007bff shadow #007bff;
+  text-shadow: #007bff;
+  text-size-adjust: auto;
+  text-decoration-color: #007bff;
+}
 .infos .social-links a {
   font-size: 14px;
   color: #fff;
@@ -11355,8 +11362,11 @@ p {
 }
 
 .navbar-brand .brand-img {
-  width: 45px;
+  width: 250px;
   margin: -0.3125rem 0;
+  box-shadow: blue 0 0 15px;
+  background-color: white;
+  border-radius: 15%;
 }
 
 .navbar-toggler {
@@ -11554,7 +11564,7 @@ pre .code {
   position: relative;
   height: 100vh;
   min-height: 600px;
-  background-image: url(../imgs/header.jpg);
+  background-image: url(../imgs/header.png);
   background-size: cover;
   background-position: center;
   display: -webkit-box;
