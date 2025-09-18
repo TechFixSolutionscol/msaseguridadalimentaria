@@ -11364,9 +11364,9 @@ p {
 .navbar-brand .brand-img {
   width: 250px;
   margin: -0.3125rem 0;
-  box-shadow: blue 0 0 15px;
+  box-shadow: white 0 0 15px;
   background-color: white;
-  border-radius: 15%;
+  border-radius: 0%;
 }
 
 .navbar-toggler {
