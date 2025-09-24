@@ -63,4 +63,33 @@ $(document).ready(function(){
         nav: true,
         dots: false
     });
+
+    // alianzas carousel
+    $('#owl-alianzas').owlCarousel({
+        margin: 20,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: true,
+        responsive: {
+            0: {
+                items: 1,
+                margin: 10
+            },
+            480: {
+                items: 1,
+                margin: 15
+            },
+            768: {
+                items: 2,
+                margin: 20
+            },
+            992: {
+                items: 3,
+                margin: 20
+            }
+        }
+    });
 });
