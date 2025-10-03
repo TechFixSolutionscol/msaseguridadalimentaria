@@ -140,7 +140,14 @@ b,
 strong {
   font-weight: bolder;
 }
-
+stronged{
+  font-weight: bolder;
+  text-shadow: 0 0 8px rgba(15, 15, 15, 0.911);
+  text-decoration: underline;
+  color: #020242;
+  font-size: 1.3rem;
+  font-style: italic;
+}
 small {
   font-size: 80%;
 }
