@@ -1,0 +1,31 @@
+# robots.txt para msaseguridad.site
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://msaseguridad.site/sitemap.xml
+
+# Bloquear archivos innecesarios
+Disallow: /assets/vendors/
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /assets/js/
+Disallow: /assets/css/
+
+# Permitir rastreo de imágenes
+Allow: /assets/imgs/
+
+# Configuración específica para bots comunes
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/imgs/
+
+User-agent: Bingbot
+Allow: /
+
+# Tiempo de rastreo (10 segundos entre peticiones)
+Crawl-delay: 10
+
